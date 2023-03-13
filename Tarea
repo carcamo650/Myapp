@@ -1,0 +1,80 @@
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatefulWidget {
+  @override
+  _MyAppState createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  int _counter = 10;
+
+  void _incrementCounter() {
+    setState(() {
+      _counter += 2;
+    });
+  }
+
+  void _decrementCounter() {
+    setState(() {
+      _counter -= 2;
+    });
+  }
+
+  void _multiplyCounter() {
+    setState(() {
+      _counter *= 2;
+    });
+  }
+
+  void _divideCounter() {
+    setState(() {
+      _counter ~/= 2;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('Calculadora'),
+        ),
+        body: Center(
+          child: Text(
+            '$_counter',
+            style: TextStyle(fontSize: 24.0),
+          ),
+        ),
+        floatingActionButton: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            FloatingActionButton(
+              onPressed: _incrementCounter,
+              tooltip: 'Sumar',
+              child: Icon(Icons.add),
+            ),
+            FloatingActionButton(
+              onPressed: _decrementCounter,
+              tooltip: 'Restar',
+              child: Icon(Icons.remove),
+            ),
+            FloatingActionButton(
+              onPressed: _multiplyCounter,
+              tooltip: 'Multiplicar',
+              child: Icon(Icons.clear),
+            ),
+            FloatingActionButton(
+              onPressed: _divideCounter,
+              tooltip: 'Dividir',
+              child: Icon(Icons.divide),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
